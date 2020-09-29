@@ -17,6 +17,7 @@ class Card
     unless VALID_SUIT.include? suit
       raise ArgumentError.new("not a valid suit")
     end
+    suit
   end
 
   def to_s
@@ -26,10 +27,11 @@ class Card
         12 => "Queen",
         13 => "King"
     }
-    if card_value[value].nil?
-      card_value[value] = value
+    display_value = value
+    if !card_value[value].nil?
+      display_value = card_value[value]
     end
-    return "#{card_value[value]} of #{card_value[suit.to_s]}"
+    return "#{display_value} of #{suit.to_s}"
   end
 
 
